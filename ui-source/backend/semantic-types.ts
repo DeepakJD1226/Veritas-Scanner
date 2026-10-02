@@ -1,0 +1,3 @@
+export type SemanticMatch={start:number;end:number;sourceId:string;sourceName:string;sourceUrl:string;words:number;similarity:number;text:string;sourceText:string};
+export type SemanticResult={status:'pending'|'complete'|'unavailable'|'insufficient';score:number|null;reason:string;model:string;checkedPassages:number;totalPassages:number;matches:SemanticMatch[]};
+export function emptySemantic(reason:string,status:SemanticResult['status']='unavailable'):SemanticResult{return {status,score:null,reason,model:'Xenova/paraphrase-multilingual-MiniLM-L12-v2',checkedPassages:0,totalPassages:0,matches:[]};}

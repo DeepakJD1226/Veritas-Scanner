@@ -1,0 +1,1 @@
+export function emptySemantic(reason, status = 'unavailable') { return { status, score: null, reason, model: 'Xenova/paraphrase-multilingual-MiniLM-L12-v2', checkedPassages: 0, totalPassages: 0, matches: [] }; }
