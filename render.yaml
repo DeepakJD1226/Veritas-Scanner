@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: veritas-selfhost
+    env: node
+    plan: free
+    buildCommand: corepack enable && pnpm install --frozen-lockfile && node node_modules/vite/bin/vite.js build --config backend/vite.config.ts && cp public/pdf.worker.min.mjs backend/web/pdf.worker.min.mjs && cp public/favicon.svg backend/web/favicon.svg && cp -R public/onnx backend/web/onnx && python3 scripts/package-standalone.py
+    startCommand: cd dist/selfhost-package && node --experimental-sqlite server.js
+    envVars:
+      - key: NODE_VERSION
+        value: 24.19.0
+      - key: HOST
+        value: 0.0.0.0
